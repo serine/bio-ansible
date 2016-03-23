@@ -1,15 +1,5 @@
 ---
 
-- name: Create required directories
-  file: dest={{item}} state=directory mode=0755 owner=sw-installer
-  with_items:
-  - "{{ source_dir }}"
-  - "{{ soft_dir }}"
-  - "{{ modules_dir }}"
-  - "{{ modules_dir }}/all"
-  - "{{ modules_dir }}/bio"
-  - "{{ modules_dir }}/core"
-
 - name: Download LMOD
   get_url:
     url=http://downloads.sourceforge.net/project/lmod/Lmod-{{ lmod_version }}.tar.bz2

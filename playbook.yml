@@ -2,13 +2,13 @@
 # This playbook deploys bioinformatics server
 
 - name: apply common configurations to all nodes
-  hosts: all
+  hosts: webserver
   remote_user: ubuntu
   roles:
-          - server_update
           - make_sw_guy
           - common
-  sudo: yes
+
+  become: true
 
 - name: set up bioinformatiky tools
   hosts: bioinformatics
@@ -22,7 +22,7 @@
 
   roles:
           - nginx 
-  sudo: yes
+  become: true
 
 - name: set up interactive server
   hosts: interactive
@@ -30,4 +30,4 @@
 
   roles:
           - interactive 
-  sudo: yes
+  become: true
